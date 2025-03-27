@@ -15,14 +15,14 @@ import json
 @register("astrbot_plugin_WZL_SuperpokePlus", "WZL", "这是 AstrBot QQ的超级戳一戳插件", "1.1.2", "https://github.com/WZL0813/astrbot_plugin_WZL_SuperpokePlus")
 class MyPlugin(Star):
     Superpoke_Command = ""
-    # plugin_store_path = "./data/plugins/astrbot_plugin_superpoke"
-    plugin_store_path = "./data/plugins/astrbot_plugin_superpoke"
+    # plugin_store_path = "./data/plugins/astrbot_plugin_wzl_superpokeplus"
+    plugin_store_path = "./data/plugins/astrbot_plugin_wzl_superpokeplus"
     def __init__(self, context: Context):
         super().__init__(context)
         self.admins = self._load_admins()  # 加载管理员列表
        # 读取 YAML 文件
-        if os.path.exists(os.path.join(self.plugin_store_path, "superPokedata.yaml")):
-            with open(os.path.join(self.plugin_store_path, "superPokedata.yaml"), "r", encoding='utf-8') as file:
+        if os.path.exists(os.path.join(self.plugin_store_path, "WZL_SuperPlusPokedata.yaml")):
+            with open(os.path.join(self.plugin_store_path, "WZL_SuperPlusPokedata.yaml"), "r", encoding='utf-8') as file:
                 loaded_data = yaml.safe_load(file)
             if loaded_data['Superpoke_Command'] != "":
                 self.Superpoke_Command = loaded_data['Superpoke_Command']
@@ -60,7 +60,7 @@ class MyPlugin(Star):
                     "Superpoke_Command": self.Superpoke_Command
                 }
                 # 保存数据到 YAML 文件
-                with open(os.path.join(self.plugin_store_path, "superPokedata.yaml"), "w", encoding="utf-8") as file:
+                with open(os.path.join(self.plugin_store_path, "WZL_SuperPlusPokedata.yaml"), "w", encoding="utf-8") as file:
                     yaml.dump(data, file, allow_unicode=True, default_flow_style=False)
                 
                 event.should_call_llm(True)
